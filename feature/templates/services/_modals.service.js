@@ -3,7 +3,7 @@
 
     angular
         .module('<%= moduleName %>')
-        .factory('Modals<%= upperCamelizeSingularName %>', <%= upperCamelizeSingularName %>Modals);
+        .factory('<%= upperCamelizeSingularName %>Modals', <%= upperCamelizeSingularName %>Modals);
 
     /* @ngInject */
     function <%= upperCamelizeSingularName %>Modals($uibModal) {

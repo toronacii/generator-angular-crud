@@ -6,25 +6,46 @@
         .controller('Edit<%= upperCamelizeSingularName %>Controller', Edit<%= upperCamelizeSingularName %>Controller);
 
     /* @ngInject */
-    function Edit<%= upperCamelizeSingularName %>Controller($state, <%= upperCamelizePluralName %>, <%= upperCamelizePluralName %>Form, <%= upperCamelizeSingularName %>) {
+    function Edit<%= upperCamelizeSingularName %>Controller($state, OData, <%= upperCamelizePluralName %>Form, <%= upperCamelizeSingularName %>) {
 
         var vm = this;
 
         angular.extend(vm, {
 
-            <%= camelizedSingularName %>: {},
+            <%= camelizedSingularName %>: <%= upperCamelizeSingularName %>,
             form: {},
             fields: <%= upperCamelizePluralName %>Form.getEditFields(),
-            edit: edit
+            edit: edit,
+            editAndRedirect: editAndRedirect
 
         });
+
+        activate();
 
         function edit(form) {
 
             if (form.$valid) {
                 
+                return vm.<%= camelizedSingularName %>.$update();
             }
-        };
+
+            toastr.error("Error en campos del formulario");
+
+            return $q.reject();
+        }
+
+        function activate() 
+        {
+
+        }
+
+        function editAndRedirect(form) {
+
+            edit(form).then(function() {
+
+                $state.go('<%= moduleName %>.list', {}, { reload: true })
+            })
+        }
     }
 
 })();

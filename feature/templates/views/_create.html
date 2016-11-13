@@ -1,24 +1,35 @@
 <section id="create-<%= slugifiedName %>">
 
-	<div class="panel panel-primary">
-		<div class="panel-heading">
-			Crear <%= featureSingularName %>
+	<div class="row wrapper border-bottom blue-bg page-heading">
+		<div class="col-lg-12">
+			<h2>Crear <%= featureSingularName %></h2>
 		</div>
-		<div class="panel-body">
+	</div>
 
-			<form name="form" ng-submit="vm.create()" novalidate>
+	<div class="ibox">
 
-				<formly-form model="vm.<%= camelizedSingularName %>" fields="vm.fields" form="form"></formly-form>
+		<div class="ibox-content">
 
-				<hr/>
-				<div class="form-group">
-					<button type="submit" class="btn btn-success" ng-disabled="vm.form.$dirty && vm.form.$invalid">
-						<i class="glyphicon glyphicon-ok"></i> Guardar
-					</button>
-					<a class="btn btn-danger" ui-sref="<%= moduleName %>">
-						<i class="glyphicon glyphicon-remove"></i> Cancelar
-					</a>
-				</div>
+			<div class="row">
+
+				<form name="form" ng-submit="vm.createAndRedirect(form)" novalidate>
+
+					<formly-form model="vm.<%= camelizedSingularName %>" fields="vm.fields" form="form"></formly-form>
+
+					<div class="col-sm-12">
+
+						<div class="form-group pull-right">
+							<button type="submit" class="btn btn-success" ng-disabled="(form.$dirty || form.$submitted) && form.$invalid">
+								<i class="glyphicon glyphicon-ok"></i> Guardar
+							</button>
+							<a class="btn btn-danger" ui-sref="<%= moduleName %>.list">
+								<i class="glyphicon glyphicon-remove"></i> Cancelar
+							</a>
+						</div>
+
+					</div>
+
+				</form>
 
 				<div ng-show="vm.error" class="alert alert-danger form-group">
 					<strong ng-bind="vm.error"></strong>
@@ -26,9 +37,10 @@
 
 				<pre ng-if="$root.$verbose">{{ vm.<%= camelizedSingularName %> | json:spacing }}</pre>
 
-			</form>
+			</div>
 
 		</div>
+
 	</div>
 
 </section>
