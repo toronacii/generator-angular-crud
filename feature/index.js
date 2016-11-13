@@ -78,6 +78,7 @@ module.exports = yeoman
             var serviceFile = 'src/' + this.path + '/services/' + this.slugifiedName + '.service.js';
             var serviceFormFile = 'src/' + this.path + '/services/' + this.slugifiedName + '.form.service.js';
             var serviceModalsFile = 'src/' + this.path + '/services/modals-' + this.slugifiedSingularName + '.service.js'
+            var oDataServiceFile = 'src/app/util/services/odata/odata-' + this.slugifiedName + '.service.js'
 
             var stylesFile = 'src/' + this.path + '/' + this.slugifiedName + '.less';
 
@@ -94,6 +95,7 @@ module.exports = yeoman
             this.template('services/_service.js', serviceFile);
             this.template('services/_form.service.js', serviceFormFile);
             this.template('services/_modals.service.js', serviceModalsFile);
+            this.template('services/_odata.service.js', oDataServiceFile);
 
             //Render styles
             this.template('_styles.less', stylesFile);
