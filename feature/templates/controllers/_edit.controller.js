@@ -14,12 +14,12 @@
 
             <%= camelizedSingularName %>: {},
             form: {},
-            fields: <%= upperCamelizePluralName %>Form.getEditFields(disabled),
-            save: save
+            fields: <%= upperCamelizePluralName %>Form.getEditFields(),
+            edit: edit
 
         });
 
-        function save(form) {
+        function edit(form) {
 
             if (form.$valid) {
                 
