@@ -1,0 +1,11 @@
+<section id="view-<%= slugifiedName %>">
+
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			Ver <%= featureSingularName %>
+		</div>
+	</div>
+
+	<pre ng-if="$root.$verbose">{{ vm.<%= camelizedSingularName %> | json:spacing }}</pre>
+
+</section>

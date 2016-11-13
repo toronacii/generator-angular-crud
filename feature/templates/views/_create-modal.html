@@ -1,0 +1,24 @@
+<form name="form" ng-submit="vm.submit(form)" novalidate>
+
+    <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">
+            Crear <%= upperCamelizeSingularName %>
+        </h3>
+    </div>
+    <div class="modal-body" id="modal-body" ng-controller="Create<%= upperCamelizeSingularName %>Controller as vm2" ng-init="vm.extend(vm2)">
+
+        <div class="row">
+
+            <formly-form model="vm.<%= camelizedSingularName %>" fields="vm2.fields" form="form"></formly-form>
+
+        </div>
+
+    </div>
+
+    <pre ng-if="$root.$verbose">{{ vm.<%= camelizedSingularName %> | json:spacing }}</pre>
+
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-disabled="(form.$dirty || form.$submitted) && form.$invalid">Guardar</button>
+        <button class="btn btn-warning" type="button" ng-click="vm.cancel()">Cancelar</button>
+    </div>
+</form>
